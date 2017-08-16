@@ -13,13 +13,20 @@
 
           <div class="list-group">
             <?php
-            foreach($rss->channel->item as $item){
-
-              echo"<a href=\"$item->link\" class=\"list-group-item\">";
-              echo"<h4 class=\"list-group-item-heading text-center\">$item->title</h4>";
-              echo"</a>";
-              echo"<br>";
+            if($errorMessage == 0){
+              foreach($rss->channel->item as $item){
+                echo"<a href=\"$item->link\" class=\"list-group-item\">";
+                echo"<h4 class=\"list-group-item-heading text-center\">
+                $item->title</h4>";
+                echo"</a>";
+                echo"<br>";
+              }
+            }else {
+              echo "<div class=\"alert alert-danger text-center\" role=\"alert\">
+              <b>HOUSTON, WE HAVE A PROBLEM!</b>
+              <br>Não foi possível ler o XML!</div>";
             }
+
 
             ?>
           </div>
